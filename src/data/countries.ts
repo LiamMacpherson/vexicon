@@ -330,6 +330,8 @@ export const countries: CountryEntry[] = [
     "code": "IO",
     "flag": "🇮🇴",
     "demonyms": [
+      "Chagossian",
+      "Îlois",
       "Indian"
     ],
     "aliases": []
@@ -1739,6 +1741,9 @@ export const countries: CountryEntry[] = [
     "code": "MP",
     "flag": "🇲🇵",
     "demonyms": [
+      "Northern Marianan",
+      "Northern Mariana Islander",
+      "Marianan",
       "American"
     ],
     "aliases": [
