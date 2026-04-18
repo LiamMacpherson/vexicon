@@ -180,7 +180,7 @@ export default function DailyChallenge() {
     return (
       <div className="daily-complete">
         <div className="daily-complete-inner">
-          <span className="big-emoji">🏆</span>
+          <span className="big-emoji">🏁</span>
           <h2>Daily Challenge Complete!</h2>
           <p className="daily-date">📅 {today}</p>
 
@@ -380,7 +380,7 @@ export default function DailyChallenge() {
         <span className="daily-date">📅 {today}</span>
         <div className="game-stats">
           <span>⏱ {formatTime(roundState.elapsed)}</span>
-          <span>🏆 {totalScore}</span>
+          <span>🏁 {totalScore}</span>
         </div>
       </div>
 
@@ -544,7 +544,7 @@ export default function DailyChallenge() {
               <button className="next-btn" onClick={handleNext}>
                 {isLastRoundOfStage
                   ? isLastStage
-                    ? 'Finish! 🏆'
+                    ? 'Finish! 🏁'
                     : `Next: ${STAGE_LABELS[STAGES[stageIndex + 1]]} →`
                   : 'Next →'}
               </button>
