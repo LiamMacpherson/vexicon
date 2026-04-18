@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { replaceWithFlags, type Segment } from './utils/replaceWithFlags'
+import { replaceWithFlags, type Segment } from './utils/flagConversionUtils'
 import ModeToggle from './components/ModeToggle'
+import CopyToClipboard from './components/CopyToClipboard'
 import DecodeGame from './components/DecodeGame'
 import DailyChallenge from './components/DailyChallenge'
 import './App.css'
@@ -29,12 +30,13 @@ function App() {
         <>
           <textarea
             className="input"
-            placeholder="Try: I love France and the Brazilian people..."
+            placeholder="I love Brazil and the Scottish people..."
             value={text}
             onChange={(e) => setText(e.target.value)}
             rows={4}
           />
 
+        <div className="output-row">
           <div className="output" aria-live="polite">
             {segments.length === 0 && (
               <span className="placeholder">Your flagified text will appear here…</span>
@@ -49,6 +51,10 @@ function App() {
               )
             )}
           </div>
+          <div className="copy-button">
+            <CopyToClipboard segments={segments} />
+          </div>
+        </div>
         </>
       )}
 

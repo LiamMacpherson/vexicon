@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { generateDailySentences, type GameSentence } from '../data/sentences';
 import { countries, checkWrongForm } from '../data/countries';
-import { replaceWithFlags, type Segment } from '../utils/replaceWithFlags';
+import { replaceWithFlags, type Segment } from '../utils/flagConversionUtils';
 
 type Difficulty = 'easy' | 'medium' | 'hard';
 const STAGES: Difficulty[] = ['easy', 'medium', 'hard'];

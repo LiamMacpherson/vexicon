@@ -58,6 +58,12 @@ export function replaceWithFlags(input: string): Segment[] {
   return segments;
 }
 
+export function getAsText(segments: Segment[]): string {
+  return segments
+    .map(seg => (seg.type === 'flag' ? seg.flag : seg.text))
+    .join('');
+}
+
 function lookupWord(word: string): string | null {
   const lower = word.toLowerCase();
 
