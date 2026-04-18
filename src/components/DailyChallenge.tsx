@@ -380,7 +380,7 @@ export default function DailyChallenge() {
         <span className="daily-date">📅 {today}</span>
         <div className="game-stats">
           <span>⏱ {formatTime(roundState.elapsed)}</span>
-          <span>🏁 {totalScore}</span>
+          <span>🏆 {totalScore}</span>
         </div>
       </div>
 
@@ -509,8 +509,8 @@ export default function DailyChallenge() {
                 const wrongForm = checkWrongForm(word, answerWords[i]);
                 if (wrongForm) {
                   const tip = wrongForm === 'demonym'
-                    ? 'Ensure you are using the correct demonym'
-                    : 'Ensure you are using the correct country name';
+                    ? 'Correct country, but use the demonym'
+                    : 'Use the country not the demonym';
                   return (
                     <span key={i} className="word-close" onClick={(e) => e.currentTarget.classList.toggle('tip-open')}>
                       {word}<span className="word-tip">{tip}</span>
