@@ -1356,7 +1356,8 @@ export const countries: CountryEntry[] = [
     "code": "LU",
     "flag": "🇱🇺",
     "demonyms": [
-      "Luxembourger"
+      "Luxembourger",
+      "Luxembourgish"
     ],
     "aliases": [
       "Grand Duchy of Luxembourg"
