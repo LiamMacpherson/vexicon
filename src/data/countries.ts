@@ -1055,6 +1055,7 @@ export const countries: CountryEntry[] = [
     "code": "IS",
     "flag": "🇮🇸",
     "demonyms": [
+      "Icelandic",
       "Icelander"
     ],
     "aliases": []
