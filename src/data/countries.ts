@@ -301,6 +301,7 @@ export const countries: CountryEntry[] = [
     "code": "BW",
     "flag": "🇧🇼",
     "demonyms": [
+      "Batswana",
       "Motswana"
     ],
     "aliases": [
