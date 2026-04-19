@@ -380,7 +380,7 @@ export default function DailyChallenge() {
         <span className="daily-date">📅 {today}</span>
         <div className="game-stats">
           <span>⏱ {formatTime(roundState.elapsed)}</span>
-          <span>🏁 {totalScore}</span>
+          <span>🏆 {totalScore}</span>
         </div>
       </div>
 
