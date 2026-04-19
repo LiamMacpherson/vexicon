@@ -158,7 +158,7 @@ export default function DecodeGame() {
     if (allAnswered) {
       updated.elapsed = Date.now() - gameState.startTime;
       if (allCorrect) {
-        const points = Math.max(10 - hintsUsed * 3, 1);
+        const points = Math.max(10 - (hintsUsed * 3), 1);
         setScore((s) => s + points);
         setStreak((s) => s + 1);
       } else {
@@ -380,11 +380,24 @@ export default function DecodeGame() {
 
       {/* Actions */}
       <div className="game-actions">
-        {!gameState.solved && (
+        {!gameState.solved && (() => {
+          let isFinalHint;
+          if (isMultipleChoice) {
+            isFinalHint = gameState.flagChoices.length - gameState.flagChoices.filter((c) => c.selected!=null).length === 1;
+          } else {
+            const totalFlags = gameState.encoded.filter((f) => f.type === 'flag').length;
+            isFinalHint = totalFlags - gameState.hintsUsed === 1;
+          } 
+          return (
           <button className="hint-btn" onClick={useHint}>
-            💡 Hint (−3 pts)
+            {
+              isFinalHint
+            ? `🤕 Give up (-3 pts)`
+            : `💡 Hint (−3 pts)` 
+            }
           </button>
-        )}
+        ); 
+        })()}
         {gameState.solved && (() => {
           const correctCount = gameState.flagChoices.filter((c) => c.selected === c.correctAnswer && !c.hinted).length;
           const total = gameState.flagChoices.length;
