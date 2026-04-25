@@ -1,10 +1,10 @@
-import React from 'react';
+
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 // Mock sentences to produce a deterministic hard-mode sentence with punctuation
 vi.mock('../data/sentences', () => ({
-  generateRound: (difficulty: any, count?: number) => [
+  generateRound: (difficulty: any) => [
     { id: 999, text: 'I went to Brazil, on holiday.', difficulty },
   ],
   curatedSentences: [],
