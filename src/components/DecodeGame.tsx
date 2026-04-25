@@ -355,15 +355,16 @@ export default function DecodeGame() {
                 if (i >= answerWords.length) {
                   return <span key={i} className="word-wrong">{word}</span>;
                 }
-                const correct = word.toLowerCase() === answerWords[i].toLowerCase();
+                const stripTrailing = (s: string) => s.toLowerCase().replace(/[^a-zA-ZÀ-ÿ]+$/g, '');
+                const correct = stripTrailing(word) === stripTrailing(answerWords[i]);
                 if (correct) {
                   return <span key={i} className="word-correct">{word}</span>;
                 }
                 const wrongForm = checkWrongForm(word, answerWords[i]);
                 if (wrongForm) {
                   const tip = wrongForm === 'demonym'
-                    ? 'Ensure you are using the correct demonym'
-                    : 'Ensure you are using the correct country name';
+                    ? 'Correct country, but use the demonym'
+                    : 'Use the country not the demonym';
                   return (
                     <span key={i} className="word-close" onClick={(e) => e.currentTarget.classList.toggle('tip-open')}>
                       {word}<span className="word-tip">{tip}</span>
