@@ -502,7 +502,8 @@ export default function DailyChallenge() {
                 if (i >= answerWords.length) {
                   return <span key={i} className="word-wrong">{word}</span>;
                 }
-                const correct = word.toLowerCase() === answerWords[i].toLowerCase();
+                const stripTrailing = (s: string) => s.toLowerCase().replace(/[^a-zA-ZÀ-ÿ]+$/g, '');
+                const correct = stripTrailing(word) === stripTrailing(answerWords[i]);
                 if (correct) {
                   return <span key={i} className="word-correct">{word}</span>;
                 }
