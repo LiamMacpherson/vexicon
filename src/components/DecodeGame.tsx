@@ -1,19 +1,10 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { generateRound, curatedSentences, type GameSentence } from '../data/sentences';
-import { countries, checkWrongForm } from '../data/countries';
+import { checkWrongForm } from '../data/countries';
 import { replaceWithFlags, type Segment } from '../utils/flagConversionUtils';
 
-type Difficulty = 'easy' | 'medium' | 'hard';
-
-interface FlagChoice {
-  segmentIndex: number;
-  flag: string;
-  original: string;
-  options: string[];      // multiple choice options (country/demonym names)
-  correctAnswer: string;  // the correct option
-  selected: string | null;
-  hinted: boolean;
-}
+import type { Difficulty, FlagChoice } from '../utils/gameUtils';
+import { generateDistractors, shuffleArray, findCountryName } from '../utils/gameUtils';
 
 interface GameState {
   sentence: GameSentence;
@@ -27,34 +18,6 @@ interface GameState {
   elapsed: number;
   hintsUsed: number;
   revealedFlags: Set<number>;
-}
-
-function generateDistractors(correctName: string, count: number): string[] {
-  const allNames = countries
-    .map((c) => c.name)
-    .filter((n) => n.toLowerCase() !== correctName.toLowerCase());
-  const shuffled = allNames.sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
-}
-
-function shuffleArray<T>(arr: T[]): T[] {
-  const result = [...arr];
-  for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [result[i], result[j]] = [result[j], result[i]];
-  }
-  return result;
-}
-
-// Find the country name that matches a given original word (name or demonym)
-function findCountryName(original: string): string {
-  const lower = original.toLowerCase();
-  for (const c of countries) {
-    if (c.name.toLowerCase() === lower) return c.name;
-    if (c.demonyms.some((d) => d.toLowerCase() === lower)) return c.name;
-    if (c.aliases.some((a) => a.toLowerCase() === lower)) return c.name;
-  }
-  return original;
 }
 
 export default function DecodeGame() {
